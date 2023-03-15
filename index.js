@@ -13,7 +13,7 @@ const server = http.createServer(app);
 // por medio del socket estoy dando permisos al origin de mi client
 const io = new SocketServer(server, {
   cors: {
-    origin: "http://localhost/5173"
+    origin: "http://localhost:5173",
   }
 });
 
@@ -25,8 +25,6 @@ io.on('connection', (socket) => {
   console.log(socket.id);
   console.log('User conected');
 });
-
-
 
 server.listen(PORT);
 console.log("Server started on port: "+PORT);
