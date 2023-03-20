@@ -13,7 +13,7 @@ const server = http.createServer(app);
 // por medio del socket estoy dando permisos al origin de mi client
 const io = new SocketServer(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "*",
   }
 });
 
@@ -21,10 +21,19 @@ app.use(cors());
 app.use(morgan('dev'));
 
 // método que puede ejecutarse eventualmente
-io.on('connection', (socket) => {
-  console.log(socket.id);
-  console.log('User conected');
+io.on('connection', (socket) => {  
+  console.log(`user id: ${socket.id}`);
+  // Cuando el socket reciba un evento
+  // El parámetro msg ya es el mensaje que llega
+  socket.on('message', (msg) => {
+    console.log(`Message: ${msg}`);
+    //Enviaremos el mensaje recibido a otros clientes
+    socket.broadcast.emit('message', { body: msg, user: socket.id });
+  })
+
 });
+
+
 
 server.listen(PORT);
 console.log("Server started on port: "+PORT);
