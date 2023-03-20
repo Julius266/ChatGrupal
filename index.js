@@ -23,13 +23,13 @@ app.use(morgan('dev'));
 
 // método que puede ejecutarse eventualmente
 io.on('connection', (socket) => {  
-  console.log(`user id: ${socket.id}`);
+  // console.log(`user id: ${socket.id}`);
   // Cuando el socket reciba un evento
   // El parámetro msg ya es el mensaje que llega
   socket.on('message', (msg) => {
-    console.log(`Message: ${msg}`);
+    // console.log(`Message: ${msg}`);
     //Enviaremos el mensaje recibido a otros clientes
-    socket.broadcast.emit('message', { body: msg, user: socket.id });
+    socket.broadcast.emit('message', { body: msg.body, user:msg.user });
   })
 });
 
