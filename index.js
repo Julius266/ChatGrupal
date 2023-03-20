@@ -6,6 +6,7 @@ import cors from 'cors';
 import { PORT } from './config.js';
 
 
+// Prueba cambiando origin
 const app = express();
 
 const server = http.createServer(app);
@@ -32,8 +33,6 @@ io.on('connection', (socket) => {
   })
 
 });
-
-
 
 server.listen(PORT);
 console.log("Server started on port: "+PORT);
