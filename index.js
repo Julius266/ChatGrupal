@@ -5,19 +5,19 @@ import http from 'http';
 import cors from 'cors';
 import { PORT } from './config.js';
 
-
 // Prueba cambiando origin
 const app = express();
 
 const server = http.createServer(app);
 
-// por medio del socket estoy dando permisos al origin de mi client
+// por medio del socket estoy dando permisos al origin de mi cliente
 const io = new SocketServer(server, {
   cors: {
     origin: "*",
   }
 });
 
+// Usar middlewares
 app.use(cors());
 app.use(morgan('dev'));
 
@@ -31,7 +31,6 @@ io.on('connection', (socket) => {
     //Enviaremos el mensaje recibido a otros clientes
     socket.broadcast.emit('message', { body: msg, user: socket.id });
   })
-
 });
 
 server.listen(PORT);
