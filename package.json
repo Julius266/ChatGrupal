@@ -1,7 +1,6 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -15,8 +14,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "firebase": "^10.7.1",
+    "firebase-admin": "^12.0.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.21",
-    "socket.io": "^4.6.1"    
-  }
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.7.4"
+  },
+  "description": ""
 }
